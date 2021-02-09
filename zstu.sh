@@ -12,11 +12,11 @@ if [  "$(date '+%H')" == '20' ]; then
     postfix start
     cd /logs || exit
     tar -czvf /Appdata/logs_"$Date".tar.gz /logs/*
-    echo "$Date" | mail -s "clock in fail" "$ZSTU_EMAIL_RECIEVER"
+    echo "$Date" | mail -s "clock in fail" "$ZSTU_EMAIL_RECEIVER"
 
   elif [ "$(cat /logs/success)" == '0' ]; then
     postfix start
-    echo "$Date" | mail -s "Form updated" "$ZSTU_EMAIL_RECIEVER"
+    echo "$Date" | mail -s "Form updated" "$ZSTU_EMAIL_RECEIVER"
   fi
 
 fi

@@ -41,7 +41,7 @@
 |-e ZSTU_FORM_JS_VERSION=< 健康打卡 JS version>
 |请联系知道的人或自己查看网页源码
 
-|-e ZSTU_EMAIL_RECIEVER=< 接收通知的邮箱地址 >
+|-e ZSTU_EMAIL_RECEIVER=< 接收通知的邮箱地址 >
 |目前测试 126 邮箱可以接收邮件，有能力者希望能帮忙改进代码
 
 |-v /Appdata
