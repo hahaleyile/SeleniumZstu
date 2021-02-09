@@ -31,6 +31,7 @@ RUN \
     rm -rf /var/cache/* && \
     mkdir /var/cache/apk && \
     mkdir /logs && \
+    mkdir /Appdata && \
     \
     mkdir ~/.pip && \
     echo -e \

@@ -15,8 +15,15 @@
 
 == 功能介绍
 
-== Docker 部署说明
+. 基于当前健康打卡表单的同一选项自动签到
 
+. 每天从 4 点到 20 点尝试 5 次打卡，防止学校服务器崩溃
+
+. 如果打卡全部失败或者表单更新，发邮件给目标邮箱通知
+
+. 自动保存每天的程序运行日志
+
+== Docker 部署说明
 
 .Parameters
 |===
@@ -28,12 +35,15 @@
 |-e ZSTU_PASSWORD=<Your Password>
 |输入你打卡平台的密码
 
-|-e ZSTU_URL=<打卡平台的网址>
+|-e ZSTU_URL=< 打卡平台的网址 >
 |网址请联系知道的人或自己抓包
 
-|-e ZSTU_FORM_JS_VERSION=<健康打卡 JS version>
+|-e ZSTU_FORM_JS_VERSION=< 健康打卡 JS version>
 |请联系知道的人或自己查看网页源码
 
-|-v /logs
-|打卡当天的所有日志记录
+|-e ZSTU_EMAIL_RECIEVER=< 接收通知的邮箱地址 >
+|目前测试 126 邮箱可以接收邮件，有能力者希望能帮忙改进代码
+
+|-v /Appdata
+|所有日志记录
 |===
