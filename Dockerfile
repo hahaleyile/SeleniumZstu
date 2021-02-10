@@ -49,4 +49,4 @@ RUN \
     #apk del mypacks && \
     crontab cronfile
 
-CMD ['crond', '-l 0', '-f']
+CMD crond -f
