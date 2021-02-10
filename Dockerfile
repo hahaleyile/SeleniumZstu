@@ -48,3 +48,5 @@ RUN \
     #cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     #apk del mypacks && \
     crontab cronfile
+
+CMD ['crond']

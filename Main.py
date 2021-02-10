@@ -83,6 +83,7 @@ class Zstu:
 
         self.driver.find_element(By.CSS_SELECTOR, '.fr-btn').click()
 
+        time.sleep(2)
         self.driver.get_screenshot_as_file("/logs/status_%s.png" % time.strftime("%Y-%m-%d_%H", time.localtime()))
 
         self.driver.quit()
