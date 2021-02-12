@@ -1,6 +1,7 @@
 FROM python:3.8-alpine
 
-ENV TZ="CST-8" \
+ENV \
+    TZ="Asia/Shanghai" \
     CHROME_BIN=/usr/bin/chromium-browser \
     CHROME_PATH=/usr/lib/chromium/
 
@@ -18,6 +19,7 @@ RUN \
     sed -i '/binary_location/d' /app/Main.py && \
     apk upgrade -U -a && \
     apk add --no-cache \
+        tzdata \
         mailx \
         postfix \
         chromium-chromedriver \
@@ -44,9 +46,6 @@ RUN \
         pip \
         selenium && \
     \
-    #apk add --virtual mypacks tzdata && \
-    #cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    #apk del mypacks && \
     crontab cronfile
 
 CMD ["/usr/sbin/crond","-l 0","-f"]
