@@ -19,6 +19,7 @@ RUN \
     sed -i '/binary_location/d' /app/Main.py && \
     apk upgrade -U -a && \
     apk add --no-cache \
+        curl \
         tzdata \
         mailx \
         postfix \
