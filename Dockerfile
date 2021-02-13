@@ -49,4 +49,4 @@ RUN \
     \
     crontab cronfile
 
-CMD ["/usr/sbin/crond","-l 0","-f"]
+CMD ["/usr/sbin/crond","-f"]
