@@ -1,9 +1,7 @@
+Date=$(date '+%F_%H')
+
 if [ ! -f /logs/success ]; then
-
-  Date=$(date '+%F_%H')
-
   python /app/Main.py >> /logs/log_"$Date".txt 2>&1
-
 fi
 
 if [  "$(date '+%H')" == '16' ]; then
