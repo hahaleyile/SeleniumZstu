@@ -55,10 +55,10 @@ class Zstu:
                 web_element.click()
                 break
 
-        WebDriverWait(self.driver, 10).until(
-            ec.frame_to_be_available_and_switch_to_it(
-                (By.CSS_SELECTOR, 'iframe[src^="/webroot/decision/v10/entry/access"]')
-            ))
+        time.sleep(2)
+        self.driver.switch_to.default_content()
+        self.driver.switch_to.frame(
+            self.driver.find_element(By.CSS_SELECTOR, 'iframe[src^="/webroot/decision/v10/entry/access"]'))
 
         js_version_src: str = self.driver.find_element_by_css_selector('script[src*=jsVersion]').get_attribute('src')
         js_version = re.search(r"jsVersion=(.+)", js_version_src).group(1)
