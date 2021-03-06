@@ -55,7 +55,7 @@ class Zstu:
                 web_element.click()
                 break
 
-        time.sleep(2)
+        time.sleep(6)
         self.driver.switch_to.default_content()
         self.driver.switch_to.frame(
             self.driver.find_element(By.CSS_SELECTOR, 'iframe[src^="/webroot/decision/v10/entry/access"]'))
