@@ -93,5 +93,6 @@ load_dotenv()
 zstu = Zstu()
 zstu.test()
 print('Success!')
+# TODO : 2021/3/8 "success" file is always 1, however jsVersion is not the key para
 with open(file='/logs/success', mode='w') as f:
     f.write('1')
