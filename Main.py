@@ -83,10 +83,11 @@ class Zstu:
         time.sleep(2)
         self.driver.get_screenshot_as_file("/logs/status_%s.png" % time.strftime("%Y-%m-%d_%H", time.localtime()))
 
-        self.driver.quit()
+        if len(self.driver.find_elements_by_css_selector("tr.verify-row-alt")) == 0:
+            with open(file='/logs/success', mode='w') as f:
+                f.write('1')
 
-        with open(file='/logs/success', mode='w') as f:
-            f.write('1')
+        self.driver.quit()
 
 
 load_dotenv()
