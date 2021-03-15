@@ -1,5 +1,4 @@
 import os
-import re
 import time
 from typing import List
 
@@ -60,13 +59,10 @@ class Zstu:
         self.driver.switch_to.frame(
             self.driver.find_element(By.CSS_SELECTOR, 'iframe[src^="/webroot/decision/v10/entry/access"]'))
 
-        js_version_src: str = self.driver.find_element_by_css_selector('script[src*=jsVersion]').get_attribute('src')
-        js_version = re.search(r"jsVersion=(.+)", js_version_src).group(1)
-
-        # 如果 js 版本更新，以此认为整个表单更新，需要重新填写
-        if js_version != os.getenv('ZSTU_FORM_JS_VERSION'):
+        if len(self.driver.find_elements_by_css_selector('tbody tr')) == os.getenv('ZSTU_FORM_OPTION_NUM'):
             with open(file='/logs/success', mode='w') as F:
                 F.write('0')
+                return
 
         self.locate_and_click("#D17-0-0 .fr-group-span:nth-child(1) .fr-widget-click")
         self.locate_and_click("#D18-0-0 .fr-group-span:nth-child(1) .fr-widget-click")
@@ -78,6 +74,7 @@ class Zstu:
         self.locate_and_click("#F27-0-0 .fr-group-span:nth-child(1) .fr-widget-click")
         self.locate_and_click("#F29-0-0 .fr-group-span:nth-child(2) .fr-widget-click")
         self.locate_and_click("#F32-0-0 .fr-group-span:nth-child(2) .fr-widget-click")
+        self.locate_and_click("#F35-0-0 .fr-group-span:nth-child(2) .fr-widget-click")
 
         self.driver.get_screenshot_as_file("/logs/fill_in_%s.png" % time.strftime("%Y-%m-%d_%H", time.localtime()))
 
@@ -88,11 +85,11 @@ class Zstu:
 
         self.driver.quit()
 
+        with open(file='/logs/success', mode='w') as f:
+            f.write('1')
+
 
 load_dotenv()
 zstu = Zstu()
 zstu.test()
 print('Success!')
-# TODO : 2021/3/8 "success" file is always 1, however jsVersion is not the key para
-with open(file='/logs/success', mode='w') as f:
-    f.write('1')
