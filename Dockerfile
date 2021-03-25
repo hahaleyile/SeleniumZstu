@@ -10,7 +10,7 @@ RUN \
     apk upgrade -U -a && \
     apk add --no-cache \
         mailx \
-        postfix \
+        postfix && \
     rm -rf /var/cache/* && \
     mkdir /var/cache/apk && \
     mkdir /logs && \
